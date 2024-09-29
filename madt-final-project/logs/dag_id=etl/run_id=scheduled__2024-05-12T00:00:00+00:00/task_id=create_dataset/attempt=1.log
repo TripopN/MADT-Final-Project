@@ -1,0 +1,62 @@
+[2024-09-29T09:07:21.672+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-09-29T09:07:21.724+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.create_dataset scheduled__2024-05-12T00:00:00+00:00 [queued]>
+[2024-09-29T09:07:21.752+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.create_dataset scheduled__2024-05-12T00:00:00+00:00 [queued]>
+[2024-09-29T09:07:21.754+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2024-09-29T09:07:21.801+0000] {taskinstance.py:2327} INFO - Executing <Task(BigQueryCreateEmptyDatasetOperator): create_dataset> on 2024-05-12 00:00:00+00:00
+[2024-09-29T09:07:21.843+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl', 'create_dataset', 'scheduled__2024-05-12T00:00:00+00:00', '--job-id', '152', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpq7lcjxt3']
+[2024-09-29T09:07:21.847+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=29289) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-29T09:07:21.849+0000] {standard_task_runner.py:63} INFO - Started process 29385 to run task
+[2024-09-29T09:07:21.848+0000] {standard_task_runner.py:91} INFO - Job 152: Subtask create_dataset
+[2024-09-29T09:07:22.031+0000] {task_command.py:426} INFO - Running <TaskInstance: etl.create_dataset scheduled__2024-05-12T00:00:00+00:00 [running]> on host 71321b93f95e
+[2024-09-29T09:07:22.280+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='create_dataset' AIRFLOW_CTX_EXECUTION_DATE='2024-05-12T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-05-12T00:00:00+00:00'
+[2024-09-29T09:07:22.282+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-09-29T09:07:22.311+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-09-29T09:07:22.326+0000] {base.py:84} INFO - Using connection ID 'my_gcp_conn' for task execution.
+[2024-09-29T09:07:22.575+0000] {bigquery.py:470} INFO - datasetId was not specified in `dataset_reference`. Will use default value finalproject_data.
+[2024-09-29T09:07:22.593+0000] {bigquery.py:470} INFO - projectId was not specified in `dataset_reference`. Will use default value madt-finalproject.
+[2024-09-29T09:07:22.594+0000] {bigquery.py:481} INFO - Creating dataset: finalproject_data in project: madt-finalproject 
+[2024-09-29T09:07:23.347+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-09-29T09:07:23.352+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 2018, in execute
+    dataset = bq_hook.create_empty_dataset(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/common/hooks/base_google.py", line 485, in inner_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 482, in create_empty_dataset
+    dataset_object = self.get_client(project_id=project_id, location=location).create_dataset(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/client.py", line 681, in create_dataset
+    api_response = self._call_api(
+                   ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/client.py", line 831, in _call_api
+    return call()
+           ^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 144, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.Forbidden: 403 POST https://bigquery.googleapis.com/bigquery/v2/projects/madt-finalproject/datasets?prettyPrint=false: BigQuery API has not been used in project 604488057157 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/bigquery.googleapis.com/overview?project=604488057157 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry. [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developers console API activation', 'url': 'https://console.developers.google.com/apis/api/bigquery.googleapis.com/overview?project=604488057157'}]}, {'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'SERVICE_DISABLED', 'domain': 'googleapis.com', 'metadata': {'service': 'bigquery.googleapis.com', 'consumer': 'projects/604488057157'}}]
+[2024-09-29T09:07:23.387+0000] {taskinstance.py:1205} INFO - Marking task as FAILED. dag_id=etl, task_id=create_dataset, execution_date=20240512T000000, start_date=20240929T090721, end_date=20240929T090723
+[2024-09-29T09:07:23.634+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 152 for task create_dataset (403 POST https://bigquery.googleapis.com/bigquery/v2/projects/madt-finalproject/datasets?prettyPrint=false: BigQuery API has not been used in project 604488057157 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/bigquery.googleapis.com/overview?project=604488057157 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry. [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developers console API activation', 'url': 'https://console.developers.google.com/apis/api/bigquery.googleapis.com/overview?project=604488057157'}]}, {'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'SERVICE_DISABLED', 'domain': 'googleapis.com', 'metadata': {'service': 'bigquery.googleapis.com', 'consumer': 'projects/604488057157'}}]; 29385)
+[2024-09-29T09:07:23.755+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-09-29T09:07:23.818+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-29T09:07:23.838+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

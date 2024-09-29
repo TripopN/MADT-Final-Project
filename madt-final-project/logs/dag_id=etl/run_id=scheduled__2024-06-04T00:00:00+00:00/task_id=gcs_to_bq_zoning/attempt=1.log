@@ -1,0 +1,23 @@
+[2024-09-29T09:11:57.614+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-09-29T09:11:57.726+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.gcs_to_bq_zoning scheduled__2024-06-04T00:00:00+00:00 [queued]>
+[2024-09-29T09:11:57.791+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.gcs_to_bq_zoning scheduled__2024-06-04T00:00:00+00:00 [queued]>
+[2024-09-29T09:11:57.791+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2024-09-29T09:11:58.262+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bq_zoning> on 2024-06-04 00:00:00+00:00
+[2024-09-29T09:11:58.359+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl', 'gcs_to_bq_zoning', 'scheduled__2024-06-04T00:00:00+00:00', '--job-id', '538', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp_pnlmn3k']
+[2024-09-29T09:11:58.376+0000] {standard_task_runner.py:91} INFO - Job 538: Subtask gcs_to_bq_zoning
+[2024-09-29T09:11:58.378+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=32792) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-29T09:11:58.379+0000] {standard_task_runner.py:63} INFO - Started process 32913 to run task
+[2024-09-29T09:11:58.642+0000] {task_command.py:426} INFO - Running <TaskInstance: etl.gcs_to_bq_zoning scheduled__2024-06-04T00:00:00+00:00 [running]> on host 71321b93f95e
+[2024-09-29T09:11:58.910+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='gcs_to_bq_zoning' AIRFLOW_CTX_EXECUTION_DATE='2024-06-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-04T00:00:00+00:00'
+[2024-09-29T09:11:58.912+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-09-29T09:11:58.947+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-09-29T09:11:58.984+0000] {base.py:84} INFO - Using connection ID 'my_gcp_conn' for task execution.
+[2024-09-29T09:11:58.985+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-09-29T09:11:59.348+0000] {bigquery.py:2328} INFO - Project is not included in destination_project_dataset_table: finalproject_data.zoning; using project "madt-finalproject"
+[2024-09-29T09:11:59.350+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'zoning'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/zoning.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False, 'skipLeadingRows': None, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-09-29T09:11:59.352+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_gcs_to_bq_zoning_2024_06_04T00_00_00_00_00_49031873fa95b7153b9f46e61e1b0e79
+[2024-09-29T09:12:02.825+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-09-29T09:12:02.850+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl, task_id=gcs_to_bq_zoning, execution_date=20240604T000000, start_date=20240929T091157, end_date=20240929T091202
+[2024-09-29T09:12:02.952+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-09-29T09:12:02.986+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-29T09:12:02.998+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
