@@ -1,0 +1,22 @@
+[2024-09-29T14:29:16.806+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-09-29T14:29:16.870+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.upload_file_fact_to_warehouse scheduled__2024-08-29T00:00:00+00:00 [queued]>
+[2024-09-29T14:29:16.910+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.upload_file_fact_to_warehouse scheduled__2024-08-29T00:00:00+00:00 [queued]>
+[2024-09-29T14:29:16.910+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2024-09-29T14:29:17.468+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToGCSOperator): upload_file_fact_to_warehouse> on 2024-08-29 00:00:00+00:00
+[2024-09-29T14:29:17.519+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl', 'upload_file_fact_to_warehouse', 'scheduled__2024-08-29T00:00:00+00:00', '--job-id', '1996', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmphi8mhbvt']
+[2024-09-29T14:29:17.524+0000] {standard_task_runner.py:91} INFO - Job 1996: Subtask upload_file_fact_to_warehouse
+[2024-09-29T14:29:17.521+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=22403) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-29T14:29:17.527+0000] {standard_task_runner.py:63} INFO - Started process 22499 to run task
+[2024-09-29T14:29:17.771+0000] {task_command.py:426} INFO - Running <TaskInstance: etl.upload_file_fact_to_warehouse scheduled__2024-08-29T00:00:00+00:00 [running]> on host 71321b93f95e
+[2024-09-29T14:29:18.197+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='upload_file_fact_to_warehouse' AIRFLOW_CTX_EXECUTION_DATE='2024-08-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-08-29T00:00:00+00:00'
+[2024-09-29T14:29:18.199+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-09-29T14:29:18.245+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-09-29T14:29:18.272+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-09-29T14:29:20.516+0000] {gcs_to_gcs.py:535} INFO - Executing copy of gs://rawdata-madt-finalproject/fact.csv to gs://storage-madt-finalproject/fact.csv
+[2024-09-29T14:29:20.934+0000] {gcs.py:256} INFO - Total Bytes: 2585949 | Bytes Written: 2585949
+[2024-09-29T14:29:20.934+0000] {gcs.py:264} INFO - Object fact.csv in bucket rawdata-madt-finalproject rewritten to object fact.csv in bucket storage-madt-finalproject
+[2024-09-29T14:29:20.934+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-09-29T14:29:21.003+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl, task_id=upload_file_fact_to_warehouse, execution_date=20240829T000000, start_date=20240929T142916, end_date=20240929T142921
+[2024-09-29T14:29:21.133+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-09-29T14:29:21.229+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-29T14:29:21.244+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

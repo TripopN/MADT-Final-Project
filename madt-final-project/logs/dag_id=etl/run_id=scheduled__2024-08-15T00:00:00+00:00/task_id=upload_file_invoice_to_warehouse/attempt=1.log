@@ -1,0 +1,22 @@
+[2024-09-29T14:26:26.530+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-09-29T14:26:26.566+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.upload_file_invoice_to_warehouse scheduled__2024-08-15T00:00:00+00:00 [queued]>
+[2024-09-29T14:26:26.583+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.upload_file_invoice_to_warehouse scheduled__2024-08-15T00:00:00+00:00 [queued]>
+[2024-09-29T14:26:26.583+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2024-09-29T14:26:26.617+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToGCSOperator): upload_file_invoice_to_warehouse> on 2024-08-15 00:00:00+00:00
+[2024-09-29T14:26:26.653+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl', 'upload_file_invoice_to_warehouse', 'scheduled__2024-08-15T00:00:00+00:00', '--job-id', '1749', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpwg67ddcf']
+[2024-09-29T14:26:26.655+0000] {standard_task_runner.py:91} INFO - Job 1749: Subtask upload_file_invoice_to_warehouse
+[2024-09-29T14:26:26.654+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=20233) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-29T14:26:26.658+0000] {standard_task_runner.py:63} INFO - Started process 20295 to run task
+[2024-09-29T14:26:26.825+0000] {task_command.py:426} INFO - Running <TaskInstance: etl.upload_file_invoice_to_warehouse scheduled__2024-08-15T00:00:00+00:00 [running]> on host 71321b93f95e
+[2024-09-29T14:26:27.112+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='upload_file_invoice_to_warehouse' AIRFLOW_CTX_EXECUTION_DATE='2024-08-15T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-08-15T00:00:00+00:00'
+[2024-09-29T14:26:27.115+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-09-29T14:26:27.144+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-09-29T14:26:27.174+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-09-29T14:26:28.486+0000] {gcs_to_gcs.py:535} INFO - Executing copy of gs://rawdata-madt-finalproject/invoice.csv to gs://storage-madt-finalproject/invoice.csv
+[2024-09-29T14:26:28.921+0000] {gcs.py:256} INFO - Total Bytes: 818167 | Bytes Written: 818167
+[2024-09-29T14:26:28.925+0000] {gcs.py:264} INFO - Object invoice.csv in bucket rawdata-madt-finalproject rewritten to object invoice.csv in bucket storage-madt-finalproject
+[2024-09-29T14:26:28.925+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-09-29T14:26:28.962+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl, task_id=upload_file_invoice_to_warehouse, execution_date=20240815T000000, start_date=20240929T142626, end_date=20240929T142628
+[2024-09-29T14:26:29.379+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-09-29T14:26:29.491+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-29T14:26:29.504+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

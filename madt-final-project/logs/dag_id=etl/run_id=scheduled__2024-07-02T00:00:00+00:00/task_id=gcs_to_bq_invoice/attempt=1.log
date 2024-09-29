@@ -1,0 +1,22 @@
+[2024-09-29T14:18:58.110+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-09-29T14:18:58.154+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.gcs_to_bq_invoice scheduled__2024-07-02T00:00:00+00:00 [queued]>
+[2024-09-29T14:18:58.177+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.gcs_to_bq_invoice scheduled__2024-07-02T00:00:00+00:00 [queued]>
+[2024-09-29T14:18:58.177+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2024-09-29T14:18:58.220+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bq_invoice> on 2024-07-02 00:00:00+00:00
+[2024-09-29T14:18:58.251+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl', 'gcs_to_bq_invoice', 'scheduled__2024-07-02T00:00:00+00:00', '--job-id', '1102', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpr1qgfs67']
+[2024-09-29T14:18:58.255+0000] {standard_task_runner.py:91} INFO - Job 1102: Subtask gcs_to_bq_invoice
+[2024-09-29T14:18:58.253+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=14414) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-29T14:18:58.268+0000] {standard_task_runner.py:63} INFO - Started process 14493 to run task
+[2024-09-29T14:18:58.376+0000] {task_command.py:426} INFO - Running <TaskInstance: etl.gcs_to_bq_invoice scheduled__2024-07-02T00:00:00+00:00 [running]> on host 71321b93f95e
+[2024-09-29T14:18:58.652+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='gcs_to_bq_invoice' AIRFLOW_CTX_EXECUTION_DATE='2024-07-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-02T00:00:00+00:00'
+[2024-09-29T14:18:58.654+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-09-29T14:18:58.691+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-09-29T14:18:58.712+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-09-29T14:18:58.720+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-09-29T14:18:59.007+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'invoice'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/invoice.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False, 'skipLeadingRows': None, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-09-29T14:18:59.011+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_gcs_to_bq_invoice_2024_07_02T00_00_00_00_00_f7b71dcb9e258fde241d3cb63b898601
+[2024-09-29T14:19:02.676+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-09-29T14:19:02.713+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl, task_id=gcs_to_bq_invoice, execution_date=20240702T000000, start_date=20240929T141858, end_date=20240929T141902
+[2024-09-29T14:19:03.265+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-09-29T14:19:03.411+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-29T14:19:03.431+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
