@@ -1,0 +1,22 @@
+[2024-10-01T18:33:20.542+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-10-01T18:33:20.586+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_customer manual__2024-10-01T18:33:03.468198+00:00 [queued]>
+[2024-10-01T18:33:20.608+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_customer manual__2024-10-01T18:33:03.468198+00:00 [queued]>
+[2024-10-01T18:33:20.608+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2024-10-01T18:33:20.642+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bigquery.gcs_to_bq_customer> on 2024-10-01 18:33:03.468198+00:00
+[2024-10-01T18:33:20.669+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_with_cleaning_transfer', 'gcs_to_bigquery.gcs_to_bq_customer', 'manual__2024-10-01T18:33:03.468198+00:00', '--job-id', '2941', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp5k2hwmr5']
+[2024-10-01T18:33:20.674+0000] {standard_task_runner.py:91} INFO - Job 2941: Subtask gcs_to_bigquery.gcs_to_bq_customer
+[2024-10-01T18:33:20.670+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=26526) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-10-01T18:33:20.679+0000] {standard_task_runner.py:63} INFO - Started process 26557 to run task
+[2024-10-01T18:33:20.785+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_customer manual__2024-10-01T18:33:03.468198+00:00 [running]> on host 71321b93f95e
+[2024-10-01T18:33:20.996+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_with_cleaning_transfer' AIRFLOW_CTX_TASK_ID='gcs_to_bigquery.gcs_to_bq_customer' AIRFLOW_CTX_EXECUTION_DATE='2024-10-01T18:33:03.468198+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-10-01T18:33:03.468198+00:00'
+[2024-10-01T18:33:21.005+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-10-01T18:33:21.038+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-10-01T18:33:21.052+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-10-01T18:33:21.053+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-10-01T18:33:21.191+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'customer'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/cleaned_customer.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'maxBadRecords': 10, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-10-01T18:33:21.192+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_with_cleaning_transfer_gcs_to_bigquery_gcs_to_bq_customer_2024_10_01T18_33_03_468198_00_00_bb1658863082fe52162df1ddf49a6a13
+[2024-10-01T18:33:25.449+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-10-01T18:33:25.458+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl_with_cleaning_transfer, task_id=gcs_to_bigquery.gcs_to_bq_customer, execution_date=20241001T183303, start_date=20241001T183320, end_date=20241001T183325
+[2024-10-01T18:33:25.493+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-10-01T18:33:25.518+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-10-01T18:33:25.524+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

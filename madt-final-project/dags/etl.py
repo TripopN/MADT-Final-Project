@@ -42,8 +42,8 @@ with DAG(
 
     # List of files to process
     files = [
-        'customer.csv', 'invoice.csv', 'invoice_trans.csv', 'invoice_type.csv',
-        'product.csv', 'reorder.csv', 'store.csv', 'zoning.csv', 'fact.csv'
+        'customer.csv', 'invoice.csv', 'transaction.csv', 'invoice_type.csv',
+        'product.csv', 'reorder.csv', 'store.csv', 'zoning.csv'
     ]
 
     # Task group to clean and transfer CSV files from raw bucket to storage bucket
@@ -82,6 +82,7 @@ with DAG(
                 gcp_conn_id='my-gcp-conn',
                 skip_leading_rows =1, #skip the header row during import
                 retries=3,  # Add retries
+                ignore_unknown_values=True,
                 retry_delay=datetime.timedelta(minutes=5)  # Corrected retry delay
             ) for file in files
         ]

@@ -1,0 +1,22 @@
+[2024-10-01T18:27:28.186+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-10-01T18:27:28.242+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_product manual__2024-10-01T18:27:10.401563+00:00 [queued]>
+[2024-10-01T18:27:28.285+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_product manual__2024-10-01T18:27:10.401563+00:00 [queued]>
+[2024-10-01T18:27:28.291+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2024-10-01T18:27:28.324+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bigquery.gcs_to_bq_product> on 2024-10-01 18:27:10.401563+00:00
+[2024-10-01T18:27:28.347+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=23532) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-10-01T18:27:28.351+0000] {standard_task_runner.py:63} INFO - Started process 23555 to run task
+[2024-10-01T18:27:28.345+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_with_cleaning_transfer', 'gcs_to_bigquery.gcs_to_bq_product', 'manual__2024-10-01T18:27:10.401563+00:00', '--job-id', '2924', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmphtepz8mf']
+[2024-10-01T18:27:28.353+0000] {standard_task_runner.py:91} INFO - Job 2924: Subtask gcs_to_bigquery.gcs_to_bq_product
+[2024-10-01T18:27:28.428+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_product manual__2024-10-01T18:27:10.401563+00:00 [running]> on host 71321b93f95e
+[2024-10-01T18:27:28.588+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_with_cleaning_transfer' AIRFLOW_CTX_TASK_ID='gcs_to_bigquery.gcs_to_bq_product' AIRFLOW_CTX_EXECUTION_DATE='2024-10-01T18:27:10.401563+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-10-01T18:27:10.401563+00:00'
+[2024-10-01T18:27:28.589+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-10-01T18:27:28.597+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-10-01T18:27:28.604+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-10-01T18:27:28.605+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-10-01T18:27:28.675+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'product'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/cleaned_product.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'maxBadRecords': 10, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-10-01T18:27:28.677+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_with_cleaning_transfer_gcs_to_bigquery_gcs_to_bq_product_2024_10_01T18_27_10_401563_00_00_05e6db49d95e0b87cb5f929f120c78db
+[2024-10-01T18:27:31.772+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-10-01T18:27:31.781+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl_with_cleaning_transfer, task_id=gcs_to_bigquery.gcs_to_bq_product, execution_date=20241001T182710, start_date=20241001T182728, end_date=20241001T182731
+[2024-10-01T18:27:31.820+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-10-01T18:27:31.849+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-10-01T18:27:31.856+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,42 @@
+[2024-10-01T18:53:17.986+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-10-01T18:53:18.000+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_transaction manual__2024-10-01T18:47:55.707546+00:00 [queued]>
+[2024-10-01T18:53:18.006+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_transaction manual__2024-10-01T18:47:55.707546+00:00 [queued]>
+[2024-10-01T18:53:18.007+0000] {taskinstance.py:2303} INFO - Starting attempt 2 of 4
+[2024-10-01T18:53:18.020+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bigquery.gcs_to_bq_transaction> on 2024-10-01 18:47:55.707546+00:00
+[2024-10-01T18:53:18.030+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=37353) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-10-01T18:53:18.029+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_with_cleaning_transfer', 'gcs_to_bigquery.gcs_to_bq_transaction', 'manual__2024-10-01T18:47:55.707546+00:00', '--job-id', '3085', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmperl64vno']
+[2024-10-01T18:53:18.031+0000] {standard_task_runner.py:91} INFO - Job 3085: Subtask gcs_to_bigquery.gcs_to_bq_transaction
+[2024-10-01T18:53:18.031+0000] {standard_task_runner.py:63} INFO - Started process 37370 to run task
+[2024-10-01T18:53:18.076+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_transaction manual__2024-10-01T18:47:55.707546+00:00 [running]> on host 71321b93f95e
+[2024-10-01T18:53:18.156+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_with_cleaning_transfer' AIRFLOW_CTX_TASK_ID='gcs_to_bigquery.gcs_to_bq_transaction' AIRFLOW_CTX_EXECUTION_DATE='2024-10-01T18:47:55.707546+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-10-01T18:47:55.707546+00:00'
+[2024-10-01T18:53:18.157+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-10-01T18:53:18.163+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-10-01T18:53:18.166+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-10-01T18:53:18.167+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-10-01T18:53:18.212+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'transaction'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/transaction.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-10-01T18:53:18.213+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_with_cleaning_transfer_gcs_to_bigquery_gcs_to_bq_transaction_2024_10_01T18_47_55_707546_00_00_1a5db22f7b4a49df144c8083a5a48a17
+[2024-10-01T18:53:20.353+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-10-01T18:53:20.354+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 444, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/base.py", line 971, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Error while reading data, error message: CSV processing encountered too many errors, giving up. Rows: 40880; errors: 1; max bad: 0; error percent: 0; reason: invalid, message: Error while reading data, error message: CSV processing encountered too many errors, giving up. Rows: 40880; errors: 1; max bad: 0; error percent: 0; reason: invalid, location: gs://storage-madt-finalproject/transaction.csv, message: Error while reading data, error message: Unable to parse; line_number: 40879 byte_offset_to_start_of_line: 1520036 column_index: 2 column_name: "Quantity" column_type: DOUBLE value: "(blank)" File: gs://storage-madt-finalproject/transaction.csv
+[2024-10-01T18:53:20.361+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_with_cleaning_transfer, task_id=gcs_to_bigquery.gcs_to_bq_transaction, execution_date=20241001T184755, start_date=20241001T185318, end_date=20241001T185320
+[2024-10-01T18:53:20.375+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 3085 for task gcs_to_bigquery.gcs_to_bq_transaction (400 Error while reading data, error message: CSV processing encountered too many errors, giving up. Rows: 40880; errors: 1; max bad: 0; error percent: 0; reason: invalid, message: Error while reading data, error message: CSV processing encountered too many errors, giving up. Rows: 40880; errors: 1; max bad: 0; error percent: 0; reason: invalid, location: gs://storage-madt-finalproject/transaction.csv, message: Error while reading data, error message: Unable to parse; line_number: 40879 byte_offset_to_start_of_line: 1520036 column_index: 2 column_name: "Quantity" column_type: DOUBLE value: "(blank)" File: gs://storage-madt-finalproject/transaction.csv; 37370)
+[2024-10-01T18:53:20.409+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-10-01T18:53:20.428+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-10-01T18:53:20.434+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
