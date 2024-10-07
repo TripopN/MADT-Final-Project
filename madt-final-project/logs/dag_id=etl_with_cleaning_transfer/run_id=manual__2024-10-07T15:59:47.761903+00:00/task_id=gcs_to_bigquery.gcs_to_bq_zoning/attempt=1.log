@@ -1,0 +1,22 @@
+[2024-10-07T16:00:07.576+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-10-07T16:00:07.598+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_zoning manual__2024-10-07T15:59:47.761903+00:00 [queued]>
+[2024-10-07T16:00:07.628+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_zoning manual__2024-10-07T15:59:47.761903+00:00 [queued]>
+[2024-10-07T16:00:07.629+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2024-10-07T16:00:07.670+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bigquery.gcs_to_bq_zoning> on 2024-10-07 15:59:47.761903+00:00
+[2024-10-07T16:00:07.691+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_with_cleaning_transfer', 'gcs_to_bigquery.gcs_to_bq_zoning', 'manual__2024-10-07T15:59:47.761903+00:00', '--job-id', '3334', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpficjeywt']
+[2024-10-07T16:00:07.698+0000] {standard_task_runner.py:91} INFO - Job 3334: Subtask gcs_to_bigquery.gcs_to_bq_zoning
+[2024-10-07T16:00:07.696+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=1000) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-10-07T16:00:07.700+0000] {standard_task_runner.py:63} INFO - Started process 1064 to run task
+[2024-10-07T16:00:07.789+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_with_cleaning_transfer.gcs_to_bigquery.gcs_to_bq_zoning manual__2024-10-07T15:59:47.761903+00:00 [running]> on host 71321b93f95e
+[2024-10-07T16:00:07.976+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_with_cleaning_transfer' AIRFLOW_CTX_TASK_ID='gcs_to_bigquery.gcs_to_bq_zoning' AIRFLOW_CTX_EXECUTION_DATE='2024-10-07T15:59:47.761903+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-10-07T15:59:47.761903+00:00'
+[2024-10-07T16:00:07.977+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-10-07T16:00:07.987+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-10-07T16:00:07.992+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-10-07T16:00:07.993+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-10-07T16:00:08.108+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'zoning'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/zoning.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-10-07T16:00:08.110+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_with_cleaning_transfer_gcs_to_bigquery_gcs_to_bq_zoning_2024_10_07T15_59_47_761903_00_00_eb4fa3ce8a9dc3b8a824bbab655c5130
+[2024-10-07T16:00:11.691+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-10-07T16:00:11.699+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl_with_cleaning_transfer, task_id=gcs_to_bigquery.gcs_to_bq_zoning, execution_date=20241007T155947, start_date=20241007T160007, end_date=20241007T160011
+[2024-10-07T16:00:11.734+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-10-07T16:00:11.752+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-10-07T16:00:11.760+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

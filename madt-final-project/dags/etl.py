@@ -28,6 +28,57 @@ def clean_and_transfer_csv(source_bucket: str, source_object: str, destination_b
     # Upload the cleaned CSV to the destination GCS bucket
     gcs_hook.upload(destination_bucket, source_object, cleaned_file_path)
 
+# Define schemas for each table
+schemas = {
+    'customer.csv': [
+        {"name": "CustomerID", "type": "STRING"},
+        {"name": "Customer", "type": "STRING"},
+        {"name": "Country", "type": "STRING"},
+        {"name": "OpticMainID", "type": "STRING"},
+        {"name": "Category", "type": "STRING"},
+        {"name": "zoneId", "type": "STRING"}
+    ],
+    'invoice.csv': [
+        {"name": "InvoiceNo", "type": "STRING"},
+        {"name": "CustomerID", "type": "STRING"},
+        {"name": "InvoiceDate", "type": "DATE"}
+    ],
+    'invoice_type.csv': [
+        {"name": "typeId", "type": "STRING"},
+        {"name": "type_name", "type": "STRING"}
+    ],
+    'product.csv': [
+        {"name": "ProductId", "type": "STRING"},
+        {"name": "lenstype", "type": "STRING"},
+        {"name": "Part_Description", "type": "STRING"},
+        {"name": "Material_Type", "type": "STRING"},
+        {"name": "Lens_Type", "type": "STRING"},
+        {"name": "price", "type": "FLOAT"}
+    ],
+    'reorder.csv': [
+        {"name": "reorder_cause_id", "type": "STRING"},
+        {"name": "cause", "type": "STRING"}
+    ],
+    'store.csv': [
+        {"name": "StoreId", "type": "STRING"},
+        {"name": "Store", "type": "STRING"}
+    ],
+    'zoning.csv': [
+        {"name": "zoneId", "type": "STRING"},
+        {"name": "provinceEN", "type": "STRING"},
+        {"name": "provinceTH", "type": "STRING"},
+        {"name": "Region", "type": "STRING"}
+    ],
+    'transaction.csv': [
+        {"name": "InvoiceNo", "type": "STRING"},
+        {"name": "ProductId", "type": "STRING"},
+        {"name": "Quantity", "type": "INT64"},
+        {"name": "StoreId", "type": "STRING"},
+        {"name": "TypeId", "type": "STRING"},
+        {"name": "Reorder_Cause_ID", "type": "STRING"}
+    ]
+}
+
 with DAG(
     "etl_with_cleaning_transfer",
     start_date=timezone.datetime(2024, 5, 4),
@@ -58,7 +109,6 @@ with DAG(
                     'storage-madt-finalproject',  # Destination bucket
                     'my-gcp-conn'                 # GCP connection ID
                 ],
-            
             ) for file in files
         ]
 
@@ -80,10 +130,11 @@ with DAG(
                 write_disposition='WRITE_TRUNCATE',
                 create_disposition='CREATE_IF_NEEDED',
                 gcp_conn_id='my-gcp-conn',
-                skip_leading_rows =1, #skip the header row during import
+                skip_leading_rows=1,  # Skip the header row during import
                 retries=3,  # Add retries
                 ignore_unknown_values=True,
-                retry_delay=datetime.timedelta(minutes=5)  # Corrected retry delay
+                retry_delay=datetime.timedelta(minutes=5),
+                schema_fields=schemas[file]  # Set the schema for each file
             ) for file in files
         ]
 
