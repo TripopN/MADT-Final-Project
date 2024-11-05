@@ -1223,3 +1223,17 @@
 [2024-11-05T16:57:40.527+0000] {logging_mixin.py:188} INFO - [2024-11-05T16:57:40.527+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2024-11-05T16:57:40.536+0000] {logging_mixin.py:188} INFO - [2024-11-05T16:57:40.536+0000] {dag.py:3954} INFO - Setting next_dagrun for etl_with_cleaning_transfer to None, run_after=None
 [2024-11-05T16:57:40.554+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.064 seconds
+[2024-11-05T16:58:11.201+0000] {processor.py:161} INFO - Started process (PID=47624) to work on /opt/airflow/dags/etl.py
+[2024-11-05T16:58:11.202+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2024-11-05T16:58:11.203+0000] {logging_mixin.py:188} INFO - [2024-11-05T16:58:11.203+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2024-11-05T16:58:11.212+0000] {processor.py:840} INFO - DAG(s) 'etl_with_cleaning_transfer' retrieved from /opt/airflow/dags/etl.py
+[2024-11-05T16:58:11.232+0000] {logging_mixin.py:188} INFO - [2024-11-05T16:58:11.232+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-11-05T16:58:11.241+0000] {logging_mixin.py:188} INFO - [2024-11-05T16:58:11.241+0000] {dag.py:3954} INFO - Setting next_dagrun for etl_with_cleaning_transfer to None, run_after=None
+[2024-11-05T16:58:11.258+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.061 seconds
+[2024-11-05T16:58:42.031+0000] {processor.py:161} INFO - Started process (PID=47895) to work on /opt/airflow/dags/etl.py
+[2024-11-05T16:58:42.031+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2024-11-05T16:58:42.033+0000] {logging_mixin.py:188} INFO - [2024-11-05T16:58:42.032+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2024-11-05T16:58:42.042+0000] {processor.py:840} INFO - DAG(s) 'etl_with_cleaning_transfer' retrieved from /opt/airflow/dags/etl.py
+[2024-11-05T16:58:42.062+0000] {logging_mixin.py:188} INFO - [2024-11-05T16:58:42.062+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-11-05T16:58:42.071+0000] {logging_mixin.py:188} INFO - [2024-11-05T16:58:42.071+0000] {dag.py:3954} INFO - Setting next_dagrun for etl_with_cleaning_transfer to None, run_after=None
+[2024-11-05T16:58:42.088+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.062 seconds
