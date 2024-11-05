@@ -1,0 +1,22 @@
+[2024-11-05T16:09:16.891+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-05T16:09:17.491+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_customer manual__2024-11-05T16:08:59.015679+00:00 [queued]>
+[2024-11-05T16:09:17.515+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_customer manual__2024-11-05T16:08:59.015679+00:00 [queued]>
+[2024-11-05T16:09:17.518+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2024-11-05T16:09:17.572+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bigquery.gcs_to_bq_customer> on 2024-11-05 16:08:59.015679+00:00
+[2024-11-05T16:09:17.604+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=21606) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-05T16:09:17.605+0000] {standard_task_runner.py:63} INFO - Started process 21630 to run task
+[2024-11-05T16:09:17.624+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_data_pipeline_v2', 'gcs_to_bigquery.gcs_to_bq_customer', 'manual__2024-11-05T16:08:59.015679+00:00', '--job-id', '3556', '--raw', '--subdir', 'DAGS_FOLDER/etl2.py', '--cfg-path', '/tmp/tmpxgyp0kaz']
+[2024-11-05T16:09:17.627+0000] {standard_task_runner.py:91} INFO - Job 3556: Subtask gcs_to_bigquery.gcs_to_bq_customer
+[2024-11-05T16:09:17.745+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_customer manual__2024-11-05T16:08:59.015679+00:00 [running]> on host 71321b93f95e
+[2024-11-05T16:09:17.979+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_data_pipeline_v2' AIRFLOW_CTX_TASK_ID='gcs_to_bigquery.gcs_to_bq_customer' AIRFLOW_CTX_EXECUTION_DATE='2024-11-05T16:08:59.015679+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-05T16:08:59.015679+00:00'
+[2024-11-05T16:09:17.980+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-05T16:09:17.988+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-11-05T16:09:17.994+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-11-05T16:09:17.995+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-11-05T16:09:18.093+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'customer'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/customer.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'schema': {'fields': [{'name': 'CustomerID', 'type': 'STRING'}, {'name': 'Customer', 'type': 'STRING'}, {'name': 'Country', 'type': 'STRING'}, {'name': 'Customer_Category', 'type': 'STRING'}, {'name': 'provinceId', 'type': 'STRING'}, {'name': 'Latitude', 'type': 'FLOAT'}, {'name': 'Longitude', 'type': 'FLOAT'}]}, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-11-05T16:09:18.095+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_data_pipeline_v2_gcs_to_bigquery_gcs_to_bq_customer_2024_11_05T16_08_59_015679_00_00_69e951152d2f077d305305ec13106475
+[2024-11-05T16:09:21.187+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-05T16:09:21.194+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl_data_pipeline_v2, task_id=gcs_to_bigquery.gcs_to_bq_customer, execution_date=20241105T160859, start_date=20241105T160917, end_date=20241105T160921
+[2024-11-05T16:09:21.242+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-11-05T16:09:21.260+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-05T16:09:21.267+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

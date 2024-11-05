@@ -1,0 +1,42 @@
+[2024-11-05T16:19:04.430+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-05T16:19:04.590+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_province manual__2024-11-05T16:08:59.015679+00:00 [queued]>
+[2024-11-05T16:19:04.599+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_province manual__2024-11-05T16:08:59.015679+00:00 [queued]>
+[2024-11-05T16:19:04.599+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2024-11-05T16:19:04.618+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bigquery.gcs_to_bq_province> on 2024-11-05 16:08:59.015679+00:00
+[2024-11-05T16:19:04.630+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_data_pipeline_v2', 'gcs_to_bigquery.gcs_to_bq_province', 'manual__2024-11-05T16:08:59.015679+00:00', '--job-id', '3562', '--raw', '--subdir', 'DAGS_FOLDER/etl2.py', '--cfg-path', '/tmp/tmpm273t_wc']
+[2024-11-05T16:19:04.631+0000] {standard_task_runner.py:91} INFO - Job 3562: Subtask gcs_to_bigquery.gcs_to_bq_province
+[2024-11-05T16:19:04.635+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=26789) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-05T16:19:04.635+0000] {standard_task_runner.py:63} INFO - Started process 26794 to run task
+[2024-11-05T16:19:04.675+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_province manual__2024-11-05T16:08:59.015679+00:00 [running]> on host 71321b93f95e
+[2024-11-05T16:19:04.804+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_data_pipeline_v2' AIRFLOW_CTX_TASK_ID='gcs_to_bigquery.gcs_to_bq_province' AIRFLOW_CTX_EXECUTION_DATE='2024-11-05T16:08:59.015679+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-05T16:08:59.015679+00:00'
+[2024-11-05T16:19:04.806+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-05T16:19:04.812+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-11-05T16:19:04.816+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-11-05T16:19:04.817+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-11-05T16:19:04.863+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'province'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/province.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'schema': {'fields': [{'name': 'provinceId', 'type': 'STRING'}, {'name': 'province_name', 'type': 'STRING'}, {'name': 'province_name_eng', 'type': 'STRING'}, {'name': 'regionId', 'type': 'STRING'}, {'name': 'zoneId', 'type': 'STRING'}]}, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-11-05T16:19:04.864+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_data_pipeline_v2_gcs_to_bigquery_gcs_to_bq_province_2024_11_05T16_08_59_015679_00_00_b02706973933848b61132c30374ee270
+[2024-11-05T16:19:05.996+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-05T16:19:05.997+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 444, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/base.py", line 971, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://storage-madt-finalproject/province.csv; reason: notFound, message: Not found: URI gs://storage-madt-finalproject/province.csv
+[2024-11-05T16:19:06.007+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_data_pipeline_v2, task_id=gcs_to_bigquery.gcs_to_bq_province, execution_date=20241105T160859, start_date=20241105T161904, end_date=20241105T161906
+[2024-11-05T16:19:06.025+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 3562 for task gcs_to_bigquery.gcs_to_bq_province (404 Not found: URI gs://storage-madt-finalproject/province.csv; reason: notFound, message: Not found: URI gs://storage-madt-finalproject/province.csv; 26794)
+[2024-11-05T16:19:06.052+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-11-05T16:19:06.070+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-05T16:19:06.078+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

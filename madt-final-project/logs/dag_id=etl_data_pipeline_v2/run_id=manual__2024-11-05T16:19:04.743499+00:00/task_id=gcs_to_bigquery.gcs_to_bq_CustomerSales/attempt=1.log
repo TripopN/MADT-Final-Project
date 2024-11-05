@@ -1,0 +1,22 @@
+[2024-11-05T16:19:23.527+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-05T16:19:23.569+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_CustomerSales manual__2024-11-05T16:19:04.743499+00:00 [queued]>
+[2024-11-05T16:19:23.578+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_CustomerSales manual__2024-11-05T16:19:04.743499+00:00 [queued]>
+[2024-11-05T16:19:23.579+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2024-11-05T16:19:23.625+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bigquery.gcs_to_bq_CustomerSales> on 2024-11-05 16:19:04.743499+00:00
+[2024-11-05T16:19:23.656+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=26865) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-05T16:19:23.657+0000] {standard_task_runner.py:63} INFO - Started process 27001 to run task
+[2024-11-05T16:19:23.658+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_data_pipeline_v2', 'gcs_to_bigquery.gcs_to_bq_CustomerSales', 'manual__2024-11-05T16:19:04.743499+00:00', '--job-id', '3585', '--raw', '--subdir', 'DAGS_FOLDER/etl2.py', '--cfg-path', '/tmp/tmpvr4bhw68']
+[2024-11-05T16:19:23.659+0000] {standard_task_runner.py:91} INFO - Job 3585: Subtask gcs_to_bigquery.gcs_to_bq_CustomerSales
+[2024-11-05T16:19:23.773+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_CustomerSales manual__2024-11-05T16:19:04.743499+00:00 [running]> on host 71321b93f95e
+[2024-11-05T16:19:23.943+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_data_pipeline_v2' AIRFLOW_CTX_TASK_ID='gcs_to_bigquery.gcs_to_bq_CustomerSales' AIRFLOW_CTX_EXECUTION_DATE='2024-11-05T16:19:04.743499+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-05T16:19:04.743499+00:00'
+[2024-11-05T16:19:23.944+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-05T16:19:23.954+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-11-05T16:19:23.960+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-11-05T16:19:23.961+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-11-05T16:19:24.045+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'CustomerSales'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/CustomerSales.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'schema': {'fields': [{'name': 'customer_id', 'type': 'STRING'}, {'name': 'sales_id', 'type': 'STRING'}]}, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-11-05T16:19:24.047+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_data_pipeline_v2_gcs_to_bigquery_gcs_to_bq_CustomerSales_2024_11_05T16_19_04_743499_00_00_8fbfe415c5706e33aff21684096bca1d
+[2024-11-05T16:19:28.190+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-05T16:19:28.197+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl_data_pipeline_v2, task_id=gcs_to_bigquery.gcs_to_bq_CustomerSales, execution_date=20241105T161904, start_date=20241105T161923, end_date=20241105T161928
+[2024-11-05T16:19:28.246+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-11-05T16:19:28.265+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-05T16:19:28.272+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

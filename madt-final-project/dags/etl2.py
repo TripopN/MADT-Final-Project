@@ -74,20 +74,27 @@ schemas = {
         {"name": "region_name", "type": "STRING"}
     ],
     'transaction.csv': [
-        {"name": "ProductId", "type": "STRING"},
-        {"name": "TypeId", "type": "STRING"},
         {"name": "InvoiceNo", "type": "STRING"},
-        {"name": "Reorder_Cause_ID", "type": "STRING"},
-        {"name": "Quantity", "type": "INT64"}
+        {"name": "ProductId", "type": "STRING"},
+        {"name": "Quantity", "type": "INT64"},
+        {"name": "TypeId", "type": "STRING"},
+        {"name": "Reorder_Cause_ID", "type": "STRING"}
     ],
     'SalesPerson.csv': [
         {"name": "sales_id", "type": "STRING"},
         {"name": "saleperson_name", "type": "STRING"},
-        {"name": "average_round_trip_hours", "type": "INT64"}
+        {"name": "average_round_trip_hours", "type": "FLOAT"}
     ],
     'CustomerSales.csv': [
-        {"name": "customer_id", "type": "STRING"},
+        {"name": "CustomerID", "type": "STRING"},
         {"name": "sales_id", "type": "STRING"}
+    ],
+    'province.csv':[
+        {"name": "provinceId", "type":"STRING"},
+        {"name": "province_name", "type":"STRING"},
+        {"name": "regionId", "type":"STRING"},
+        {"name": "province_name_eng", "type":"STRING"},
+        {"name": "zoneId", "type":"STRING"}
     ]
 }
 
@@ -103,7 +110,7 @@ with DAG(
 
     files = [
         'customer.csv', 'invoice.csv', 'product.csv', 'reorder.csv',
-        'zone.csv', 'region.csv', 'transaction.csv', 'SalesPerson.csv', 'CustomerSales.csv'
+        'zone.csv','province.csv', 'region.csv', 'transaction.csv', 'SalesPerson.csv', 'CustomerSales.csv'
     ]
 
     # Task group to clean and transfer CSV files from raw bucket to storage bucket
