@@ -1,0 +1,11 @@
+[2024-11-05T15:58:39.893+0000] {processor.py:161} INFO - Started process (PID=15879) to work on /opt/airflow/dags/etl2.py
+[2024-11-05T15:58:39.893+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl2.py for tasks to queue
+[2024-11-05T15:58:39.895+0000] {logging_mixin.py:188} INFO - [2024-11-05T15:58:39.895+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/etl2.py
+[2024-11-05T15:58:39.911+0000] {processor.py:840} INFO - DAG(s) 'etl_data_pipeline_v2' retrieved from /opt/airflow/dags/etl2.py
+[2024-11-05T15:58:40.075+0000] {logging_mixin.py:188} INFO - [2024-11-05T15:58:40.074+0000] {override.py:1829} INFO - Created Permission View: can read on DAG:etl_data_pipeline_v2
+[2024-11-05T15:58:40.089+0000] {logging_mixin.py:188} INFO - [2024-11-05T15:58:40.089+0000] {override.py:1829} INFO - Created Permission View: can edit on DAG:etl_data_pipeline_v2
+[2024-11-05T15:58:40.101+0000] {logging_mixin.py:188} INFO - [2024-11-05T15:58:40.101+0000] {override.py:1829} INFO - Created Permission View: can delete on DAG:etl_data_pipeline_v2
+[2024-11-05T15:58:40.101+0000] {logging_mixin.py:188} INFO - [2024-11-05T15:58:40.101+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-11-05T15:58:40.114+0000] {logging_mixin.py:188} INFO - [2024-11-05T15:58:40.114+0000] {dag.py:3118} INFO - Creating ORM DAG for etl_data_pipeline_v2
+[2024-11-05T15:58:40.115+0000] {logging_mixin.py:188} INFO - [2024-11-05T15:58:40.115+0000] {dag.py:3954} INFO - Setting next_dagrun for etl_data_pipeline_v2 to None, run_after=None
+[2024-11-05T15:58:40.140+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl2.py took 0.254 seconds
