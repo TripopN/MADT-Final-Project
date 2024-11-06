@@ -95,6 +95,10 @@ schemas = {
         {"name": "regionId", "type":"STRING"},
         {"name": "province_name_eng", "type":"STRING"},
         {"name": "zoneId", "type":"STRING"}
+    ],
+    'invoice_type.csv':[
+        {"name": "typeId", "type":"STRING"},
+        {"name": "type_name", "type":"STRING"}
     ]
 }
 
@@ -109,7 +113,7 @@ with DAG(
     start = DummyOperator(task_id='start')
 
     files = [
-        'customer.csv', 'invoice.csv', 'product.csv', 'reorder.csv',
+        'customer.csv', 'invoice.csv', 'product.csv', 'reorder.csv','invoice_type.csv',
         'zone.csv','province.csv', 'region.csv', 'transaction.csv', 'SalesPerson.csv', 'CustomerSales.csv'
     ]
 

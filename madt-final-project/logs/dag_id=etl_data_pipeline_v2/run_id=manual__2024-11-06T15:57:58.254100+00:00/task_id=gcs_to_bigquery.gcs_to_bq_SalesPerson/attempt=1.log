@@ -1,0 +1,22 @@
+[2024-11-06T15:58:18.711+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-06T15:58:18.747+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_SalesPerson manual__2024-11-06T15:57:58.254100+00:00 [queued]>
+[2024-11-06T15:58:18.756+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_SalesPerson manual__2024-11-06T15:57:58.254100+00:00 [queued]>
+[2024-11-06T15:58:18.757+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2024-11-06T15:58:18.797+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): gcs_to_bigquery.gcs_to_bq_SalesPerson> on 2024-11-06 15:57:58.254100+00:00
+[2024-11-06T15:58:18.851+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=6724) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-06T15:58:18.855+0000] {standard_task_runner.py:63} INFO - Started process 6749 to run task
+[2024-11-06T15:58:18.865+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_data_pipeline_v2', 'gcs_to_bigquery.gcs_to_bq_SalesPerson', 'manual__2024-11-06T15:57:58.254100+00:00', '--job-id', '3739', '--raw', '--subdir', 'DAGS_FOLDER/etl2.py', '--cfg-path', '/tmp/tmpxeys774x']
+[2024-11-06T15:58:18.866+0000] {standard_task_runner.py:91} INFO - Job 3739: Subtask gcs_to_bigquery.gcs_to_bq_SalesPerson
+[2024-11-06T15:58:18.957+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_data_pipeline_v2.gcs_to_bigquery.gcs_to_bq_SalesPerson manual__2024-11-06T15:57:58.254100+00:00 [running]> on host 71321b93f95e
+[2024-11-06T15:58:19.219+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_data_pipeline_v2' AIRFLOW_CTX_TASK_ID='gcs_to_bigquery.gcs_to_bq_SalesPerson' AIRFLOW_CTX_EXECUTION_DATE='2024-11-06T15:57:58.254100+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-06T15:57:58.254100+00:00'
+[2024-11-06T15:58:19.222+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-06T15:58:19.263+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-11-06T15:58:19.289+0000] {base.py:84} INFO - Using connection ID 'my-gcp-conn' for task execution.
+[2024-11-06T15:58:19.291+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-11-06T15:58:19.379+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'madt-finalproject', 'datasetId': 'finalproject_data', 'tableId': 'SalesPerson'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://storage-madt-finalproject/SalesPerson.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'schema': {'fields': [{'name': 'sales_id', 'type': 'STRING'}, {'name': 'saleperson_name', 'type': 'STRING'}, {'name': 'average_round_trip_hours', 'type': 'FLOAT'}]}, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-11-06T15:58:19.381+0000] {bigquery.py:1613} INFO - Inserting job ***_etl_data_pipeline_v2_gcs_to_bigquery_gcs_to_bq_SalesPerson_2024_11_06T15_57_58_254100_00_00_b35febd33a0ad5f1414d7acf659122e0
+[2024-11-06T15:58:22.206+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-06T15:58:22.213+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl_data_pipeline_v2, task_id=gcs_to_bigquery.gcs_to_bq_SalesPerson, execution_date=20241106T155758, start_date=20241106T155818, end_date=20241106T155822
+[2024-11-06T15:58:22.256+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-11-06T15:58:22.274+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-06T15:58:22.281+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
